@@ -79,7 +79,7 @@ class DBStorage:
         """retrieves an object"""
         if cls and id:
             obj = classes[cls] if isinstance(cls, str) else cls
-            key = f'{obj().__class__.__name__}.{id}'
+            key = f"{obj().__class__.__name__}.{id}"
             objs = self.all(obj)
             return objs.get(key)
         return None
