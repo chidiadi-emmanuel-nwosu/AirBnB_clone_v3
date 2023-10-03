@@ -75,6 +75,10 @@ class DBStorage:
         Session = scoped_session(sess_factory)
         self.__session = Session
 
+    def close(self):
+        """call reload() method for deserializing the JSON file to objects"""
+        self.reload()
+
     def get(self, cls, id):
         """retrieves an object"""
         if cls and id:
