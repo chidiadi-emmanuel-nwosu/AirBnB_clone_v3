@@ -30,7 +30,7 @@ def validate_json():
     return data
 
 
-@app_views.route('/states', strict_slashes=False, methods=['GET', 'POST'])
+@app_views.route('/states', methods=['GET', 'POST'])
 def states():
     """Route for manipulating State objects"""
     if request.method == 'GET':
@@ -48,8 +48,7 @@ def states():
         return make_response(jsonify(new_state.to_dict()), 201)
 
 
-@app_views.route('/states/<state_id>', strict_slashes=False,
-                 methods=['GET', 'PUT', 'DELETE'])
+@app_views.route('/states/<state_id>', methods=['GET', 'PUT', 'DELETE'])
 def state_with_id(state_id=None):
     """Route for manipulating a specific State object"""
     state = get_state_or_abort(state_id)
