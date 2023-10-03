@@ -71,10 +71,10 @@ class FileStorage:
 
     def get(self, cls, id):
         """retrieves an object"""
-        objects = self.__session.query(classes[cls]).all()
-        for obj in objects:
-            if obj.id == id:
-                return obj
+        if cls and id:
+            obj = f"{cls}.{id}"
+            objs = self.all(cls)
+            return objs.get(obj)
         return None
 
     def count(self, cls=None):
